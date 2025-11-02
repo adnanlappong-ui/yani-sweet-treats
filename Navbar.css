@@ -1,0 +1,145 @@
+/* Navbar base */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(0,0,0,0.7);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Logo kiri */
+.navbar-left .navbar-logo {
+  width: 50px;
+  height: auto;
+}
+
+/* Tengah tagline */
+.navbar-center {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar-tagline {
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  animation: fadeInDown 1s ease forwards;
+}
+
+/* Links kanan */
+.navbar-right ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.navbar-right ul li a {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-right ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #ff6f91;
+  transition: width 0.3s ease;
+}
+
+.navbar-right ul li a:hover {
+  color: #ff6f91;
+}
+
+.navbar-right ul li a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .navbar-right ul {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu.open {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    width: 200px;
+    padding: 1rem;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .nav-menu.open li {
+    margin: 0.8rem 0;
+  }
+
+  .nav-menu.open li a {
+    color: #fff;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+  .navbar-tagline {
+    font-size: 0.95rem;
+  }
+}
